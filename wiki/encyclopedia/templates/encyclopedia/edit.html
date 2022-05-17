@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit entry
+{% endblock %}
+
+{% block body %}
+<div class="conteiner">
+    <form action="{% url 'edit' %}" method="post">
+        {% csrf_token %}
+        <div class="form_wrapper">
+            {{ form.title.as_hidden }}
+            {{ form.text }}
+        </div>
+        <button class="btn btn-primary my-2" type="submit">Save entry</button>
+        <button class="btn btn-primary my-2" type="submit" formaction="{% url 'delete' %}">Delete entry</button>
+    </form>   
+</div>
+{% endblock %}

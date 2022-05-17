@@ -1,0 +1,14 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{error_message}}
+{% endblock %}
+
+{% block body %}
+<div class="conteiner ms-auto">
+    <div class="text-center">
+        <h1>{{error_code}}</h1>
+        <p1>{{error_message}}</p1>
+    </div>
+</div>
+{% endblock %}

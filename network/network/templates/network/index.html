@@ -1,0 +1,73 @@
+{% extends "network/layout.html" %} {% load static %} {% block body %}
+<!-- Create Post Form -->
+<div id="current-view-indicator"></div>
+{% if user.is_authenticated %}
+<div id="create-view">
+  <form id="create-form">
+    {% csrf_token %}
+    <textarea
+      id="create-body"
+      class="form-control"
+      placeholder="What is on your mind, {{ user.username | title }}?"
+    ></textarea>
+
+    <input
+      id="create-button"
+      type="submit"
+      class="btn btn-primary"
+      value="Post"
+    />
+  </form>
+</div>
+{% endif %}
+
+<!--User view-->
+<div id="user-view">
+  <div id="user-viewed"></div>
+  <div id="user-follows-container">
+    <i class="bi bi-person-video3"></i> Follows: <span id="user-follows"></span>
+  </div>
+  <div id="user-followers-container">
+    <i class="bi bi-people"></i> Followers: <span id="user-followers"></span>
+  </div>
+  <button id="follow-btn" data-username="" class="btn btn-primary"></button>
+</div>
+
+<!-- Posts view -->
+<div id="posts-view">
+  <div id="posts-container"></div>
+</div>
+
+<!-- Pagination -->
+<div id="pagination">
+  <nav>
+    <ul class="pagination">
+      <li id="first-page" class="page-item">
+        <span class="page-link">&laquo;&laquo;</span>
+      </li>
+      <li id="previous-page" class="page-item">
+        <span class="page-link">&laquo;</span>
+      </li>
+      <li class="page-item"><span class="page-link">Page</span></li>
+      <li class="page-item">
+        <span id="current-page" class="page-link"></span>
+      </li>
+      <li class="page-item"><span class="page-link">of</span></li>
+      <li class="page-item">
+        <span id="number-of-pages" class="page-link"></span>
+      </li>
+      <li id="next-page" class="page-item">
+        <span class="page-link">&raquo;</span>
+      </li>
+      <li id="last-page" class="page-item">
+        <span class="page-link">&raquo;&raquo;</span>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+{% endblock %}
+<!-- JS -->
+{% block script %}
+<script src="{% static 'network/network.js' %}"></script>
+{% endblock %}

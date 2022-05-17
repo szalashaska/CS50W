@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link href="adv_styles.css" rel="stylesheet">
+        <link href="icon.png" rel="icon">
+        <title>Advanced Search</title>
+    </head>
+    <body>
+        <nav>
+            <div>
+                <a href="index.html"><img class="small_logo" src="logo.png" alt="Google logo"></a>
+            </div>
+            <div>
+                <a href="index.html">Google Search</a>
+            </div>      
+        </nav>
+        <header>
+            <div>
+                Advanced Search
+            </div>
+        </header>
+        <hr>
+        <main>
+            <!--1st column-->
+            <div id="col1">
+                <div>
+                    Find pages with...
+                </div>
+                <form action="https://google.com/search">
+                    <div class="row">
+                        <div class="form_label">
+                            <label for="all">all these words:</label>
+                        </div>
+                        <div class="form_input">
+                            <input id="all" type="text" name="as_q">                   
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form_label">
+                            <label for="exact">this exact word or phrase:</label>
+                        </div>
+                        <div class="form_input">
+                            <input id="exact" type="text" name="as_epq">                   
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form_label">
+                            <label for="any">any of these words:</label>
+                        </div>
+                        <div class="form_input">
+                            <input id="any" type="text" name="as_oq">                   
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form_label">
+                            <label for="none">none of these words:</label>
+                        </div>
+                        <div class="form_input">
+                            <input id="none" type="text" name="as_eq">                   
+                        </div>
+                    </div>
+                    
+                    <div class="btn_container">
+                        <button type="submit">Advanced Search</button>                      
+                    </div>
+                </form>
+            </div>
+            <!--2nd column-->
+            <div id="col2">
+                <div class="desc_large">  
+                        To do this this in the searchbox.
+                </div>
+                <div class="row">
+                    <div class="desc_small">
+                        Type the important words: tri-colour rat terrier
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="desc_small">
+                        Put exact words in quotes: "rat terrier"
+                    </div>
+                </div><div class="row">
+                    <div class="desc_small">
+                        Type OR between all the words you want: miniature OR standard
+                    </div>
+                </div><div class="row">
+                    <div class="desc_small">
+                        Put a minus sign just before words that you don't want: -rodent, -"Jack Russell"
+                    </div>
+                </div>
+            </div>
+        </main>
+        <hr>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <div class="text-center">
+        <h2>
+            {{ message }}
+        </h2>
+    </div>
+    {% if listing_id %}
+    <div>
+        <a class="nav-link text-dark" href="{% url 'listing' listing_id %}"><p>Go back to the lisitng</p></a>
+    </div>
+    {% endif %}
+    <div>
+        <a class="nav-link" href="{% url 'index' %}"><p>Go back main page</p></a>
+    </div>
+
+
+
+{% endblock %}

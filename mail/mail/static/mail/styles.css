@@ -1,0 +1,39 @@
+textarea {
+  min-height: 400px;
+}
+
+.mailbox-emails {
+  border: solid 1px rgb(133, 133, 179);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.mailbox-emails p {
+  margin: 2px 0;
+}
+
+.unread-background {
+  border: solid 1px rgb(255, 255, 255);
+  background: rgba(150, 150, 150, 0.3);
+}
+
+#show-email-view {
+  background: linear-gradient(-45deg, #fff, rgba(59, 59, 233, 0.1));
+  border-radius: 25px;
+  padding: 25px;
+}
+
+#show-email-view p {
+  margin: 15px 0;
+}
+
+.email-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+i {
+  margin: 5px;
+}
+
+#create-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+#create-form textarea {
+  margin: 20px 0 5px 0;
+  width: 100%;
+  resize: none;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+#posts-view,
+#create-view,
+#current-view-indicator,
+#user-view {
+  width: 100%;
+}
+
+#current-view-indicator {
+  text-align: center;
+  font-weight: 500;
+  font-size: 25px;
+  margin: 10px 0;
+}
+
+#pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#user-view {
+  background: linear-gradient(-45deg, #fff, rgba(59, 59, 233, 0.1));
+  margin: 10px;
+  padding: 10px;
+  border-radius: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+#user-viewed {
+  width: 100%;
+  font-weight: 500;
+}
+
+#user-follows-container {
+  width: 50%;
+  margin: 10px 0;
+}
+#user-followers-container {
+  width: 50%;
+  margin: 10px 0;
+  text-align: right;
+}
+
+#posts-view {
+  width: 100%;
+}
+
+#posts-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.post {
+  background: linear-gradient(-45deg, #fff, rgba(59, 59, 233, 0.1));
+  margin: 15px 0;
+  padding: 20px;
+  border-radius: 25px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.author {
+  font-weight: 500;
+  order: 1;
+  width: 50%;
+  cursor: pointer;
+}
+
+.timestamp {
+  color: rgb(101, 101, 101);
+  order: 2;
+  width: 50%;
+  text-align: right;
+}
+
+.content {
+  margin: 20px 0;
+  text-align: justify;
+  order: 3;
+  width: 100%;
+}
+
+.likes {
+  order: 5;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.edit {
+  order: 6;
+  width: 100%;
+  color: blue;
+  text-align: right;
+  cursor: pointer;
+}
+
+.text-area {
+  display: block;
+  order: 3;
+  width: 100%;
+  height: 100px;
+  margin: 20px 0;
+  word-wrap: break-all;
+  resize: none;
+}
+
+.save-changes {
+  order: 4;
+}
+
+#following-posts,
+#username,
+#first-page,
+#previous-page,
+#next-page,
+#last-page {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop */
+  #posts-view,
+  #create-view,
+  #user-view {
+    width: 50%;
+  }
+}

@@ -1,0 +1,154 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="d-flex justify-content-center">
+                    <div class="photobox2">
+                        <img src="{{listing.image}}" alt="Listing photo" class="photo">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 text-center">
+                <h2><b>{{ listing.title | title }}</b></h2>
+                <h3>{{ price }} $</h3>
+                
+                {% if user.id == leader.id and user.id != listing.author.id %}
+                    <!--If User is currently auction leader-->
+                    <div class="my-2">
+                        <p>Hey {{user.username | title}}! Your bid is currently the leading one</p>
+                    </div>
+
+                {% endif %}
+
+                <p>{{ listing.description }}</p>
+                {% if listing.category|upper  != "None" %}
+                    <p>Category: {{listing.category }}</p>
+                {% endif %}
+                <p>Seller: {{ listing.author | title }}</p>
+                <p>Created: {{ listing.timestamp }}</p>
+                
+                <div>
+
+                    {% if listing.id == finished.title.id %}
+
+                        <!--If auction is finished-->
+                        <h2>This auction is finished</h2>
+
+                    {% endif %}
+                    
+                    {% if user.is_authenticated %}
+
+                        {% if listing.id == finished.title.id and user.id == finished.winner.id and user.id == listing.author.id %}
+                            <!--If user is the author of the auction and there was no other bids than starting one-->
+                            <div class="text-center">
+                                <h2>Hey, {{ user.username | title }}!</h2>
+                                <p>Looks like there were no bids</p>
+                            </div>
+
+                        {% elif listing.id == finished.title.id and user.id == finished.winner.id %}
+
+                            <!--If user is the winner of the auction-->
+                            <div class="text-center">
+                                <h2>Congratulation {{ user.username | title }}!</h2>
+                                <p>You are the winner!</p>
+                            </div>
+
+                        {% endif %}
+
+                        {% if watchlist and listing.id != finished.title.id %}
+                        
+                            <!--Logged in user-->
+                            <form action="{% url 'watchlist' %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="action" value="delete">
+                                <input type="hidden" name="sender" value="listing">
+                                <input type="hidden" name="listing_id" value="{{ listing.id }}">
+                                <input type="submit" class="btn btn-danger" value="Remove from watchlist">
+                            </form>
+
+                        {% elif listing.id != finished.title.id %}
+
+                            <form action="{% url 'watchlist' %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="action" value="add">
+                                <input type="hidden" name="sender" value="listing">
+                                <input type="hidden" name="listing_id" value="{{ listing.id }}">
+                                <input type="submit" class="btn btn-info" value="Add to watchlist">
+                            </form>
+
+                        {% endif %} 
+
+                        {% if listing.author.id == user.id and listing.id != finished.title.id %}
+
+                            <!--If user is the author of listing-->
+                            <div class="my-2">
+                                <form  class="form-group" action="{% url 'finish' %}" method="post">
+                                    {% csrf_token %}
+                                    {{ form_finish.title.as_hidden }}
+                                    <input type="submit" class="btn btn-danger" value="Close this auction">
+                                </form>
+                            </div>
+
+                        {% elif listing.id != finished.title.id %}
+                        
+                            <!--If user is not the listing author-->
+                            <div class="my-5">
+                                <form class="form-group" action="{% url 'bid' %}" method="post">
+                                    {% csrf_token %}
+                                    {{ form_bid.listing.as_hidden }}
+                                    {{ form_bid.bidder.as_hidden }}
+                                    <div>
+                                        <label for="{{ form.bid.id_for_label }}">Place your bid here:</label>
+                                        <div class="my-2">
+                                            {{ form_bid.bid }}
+                                        </div>
+                                        <input type="submit" class="btn btn-success" value="Bid!">
+                                    </div>
+                                </form>
+                            </div>
+                            
+                        {% endif %}
+
+                    {% else %}
+
+                        <!--If user is not logged in--> 
+                        Please log in to take actions.
+
+                    {% endif %}
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row m-4">
+            <h2>Comment section:</h2>
+            <ul>
+                {% for comment in comments %}
+                    <li>
+                        <p>{{ comment.comment }}</p>
+                        <p class="text-muted">commented by: {{ comment.author | title }}</p>
+                    </li>
+                {% empty %}  
+                    <p>No comments yet.</p>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="row">
+                <form action="{% url 'comment' %}" method="post">
+                    <div>
+                        {% csrf_token %}
+                        {{ form_comment.author.as_hidden }}
+                        {{ form_comment.listing.as_hidden }}
+                        {{ form_comment.comment }}
+                    </div>
+                    <div>
+                        <input type="submit" class="btn btn-secondary" value="Add comment">
+                    </div>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

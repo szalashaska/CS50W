@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <h2>Finished auctions</h2>
+
+    {% if finished_list %}
+        <ul>
+            {% for listing in finished_list %}
+            <li>
+                <div>
+                    <a class="nav-link text-dark" href="{% url 'listing' listing.title.id %}">
+                        <h3>{{ listing.title.title | title }}</h3>
+                    </a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>There are no auctions to display</h3>
+    {% endif %}
+
+{% endblock %}

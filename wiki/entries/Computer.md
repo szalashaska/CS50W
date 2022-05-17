@@ -1,0 +1,2 @@
+#Computer
+Computer is a digital electronic machine that can be programmed to carry out sequences of arithmetic or **logical operations** (computation) automatically. Modern computers can perform generic sets of operations known as programs. These programs enable computers to perform a wide range of tasks
